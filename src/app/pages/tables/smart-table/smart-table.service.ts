@@ -14,14 +14,20 @@ export class SmartTableService {
     });
   }
 
+  createData(): void {
+    console.log('insert service');
+  }
+
+  editData(): void {
+    console.log('edit service');
+  }
+
+  deleteData(): void {
+    console.log('delete service');
+  }
+
   getNewExampleObj(n?: number): any {
     n = typeof n !== 'undefined' ? n : Math.random() * 1000;
-    // return {
-    //   id: n,
-    //   name: `Jack London ${n}`,
-    //   username: `jack_london_${n}`,
-    //   email: `jack_london_${n}@example.com`,
-    // };
     return {
       id: n,
       firstName: `First Name ${n}`,
