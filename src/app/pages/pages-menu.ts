@@ -12,6 +12,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Security',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Role Management',
+      },
+      {
+        title: 'User Management',
+      },
+      {
+        title: 'Menu Management',
+      },
+    ],
+  },
+  {
     title: 'Reports',
     icon: 'edit-2-outline',
     children: [
