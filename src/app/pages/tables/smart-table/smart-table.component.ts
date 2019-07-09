@@ -59,18 +59,17 @@ export class SmartTableComponent {
   };
 
   source: LocalDataSource = new LocalDataSource();
-  globalService: SmartTableService = new SmartTableService();
 
   // constructor(private service: SmartTableData) {
   //   const data = this.service.getData();
   //   this.source.load(data);
   // }
 
-  constructor(protected service: SmartTableService) {
+  constructor(protected globalService: SmartTableService) {
     // const data = this.service.getData();
     // this.source.load(data);
 
-    this.service.getData().then((data) => {
+    this.globalService.getData().then((data) => {
       this.source.load(data);
     });
   }

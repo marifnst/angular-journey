@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SmartTableService {
 
   static DATA_SIZE = 500;
+
+  constructor(private http:HttpClient) {}
 
   // emulating request to the server
   getData(): Promise<any> {
@@ -15,10 +18,16 @@ export class SmartTableService {
   }
 
   createData(): void {
+    this.http.get("https://3b8f920e-d189-427e-af94-ba6b0860c7db.mock.pstmn.io/sample_json_get", {responseType: 'json'}).subscribe((res)=> {
+      console.log(res);
+    });
     console.log('insert service');
   }
 
   editData(): void {
+    this.http.post("https://3b8f920e-d189-427e-af94-ba6b0860c7db.mock.pstmn.io/sample_json_post", {responseType: 'json'}).subscribe((res)=> {
+      console.log(res);
+    });
     console.log('edit service');
   }
 
