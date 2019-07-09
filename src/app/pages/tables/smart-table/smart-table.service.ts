@@ -20,6 +20,7 @@ export class SmartTableService {
   createData(): void {
     this.http.get("https://3b8f920e-d189-427e-af94-ba6b0860c7db.mock.pstmn.io/sample_json_get", {responseType: 'json'}).subscribe((res)=> {
       console.log(res);
+      console.log(res["data"]);
     });
     console.log('insert service');
   }
