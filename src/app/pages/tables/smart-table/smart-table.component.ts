@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
+import { HttpClient } from '@angular/common/http';
 
 // import { SmartTableData } from '../../../@core/data/smart-table';
 // import { SmartTableService } from '../../../@core/mock/smart-table.service';
@@ -14,6 +15,11 @@ import { SmartTableService } from './smart-table.service';
 export class SmartTableComponent {
 
   settings = {
+    actions:{
+      add:true,
+      edit:true,
+      delete:true
+    },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -29,34 +35,10 @@ export class SmartTableComponent {
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
-    },
+    },    
     columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
-      },
     },
-  };
+  };  
 
   source: LocalDataSource = new LocalDataSource();
 
@@ -65,9 +47,14 @@ export class SmartTableComponent {
   //   this.source.load(data);
   // }
 
-  constructor(protected globalService: SmartTableService) {
+  constructor(protected globalService: SmartTableService, private http:HttpClient) {
     // const data = this.service.getData();
     // this.source.load(data);
+
+    // this.settings.actions["add"] = false;
+    this.globalService.getColumn().subscribe(resp => {
+      this.settings = Object.assign({}, resp);
+    });
 
     this.globalService.getData().then((data) => {
       this.source.load(data);
