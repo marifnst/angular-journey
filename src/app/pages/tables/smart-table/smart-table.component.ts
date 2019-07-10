@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
-import { HttpClient } from '@angular/common/http';
 
 // import { SmartTableData } from '../../../@core/data/smart-table';
 // import { SmartTableService } from '../../../@core/mock/smart-table.service';
@@ -47,7 +46,7 @@ export class SmartTableComponent {
   //   this.source.load(data);
   // }
 
-  constructor(protected globalService: SmartTableService, private http:HttpClient) {
+  constructor(protected globalService: SmartTableService) {
     // const data = this.service.getData();
     // this.source.load(data);
 
@@ -61,9 +60,9 @@ export class SmartTableComponent {
     });
   }
 
-  onCreateConfirm(event): void {
+  async onCreateConfirm(event): Promise<any> {
     if (window.confirm('Are you sure you want to create?')) {
-      this.globalService.createData();
+      await this.globalService.createData();
       event.confirm.resolve();
     } else {
       event.confirm.reject();
