@@ -1,0 +1,13 @@
+security
+    user management
+    role management
+    menu management
+table
+    add
+    edit
+    delete
+    export
+    import
+    approval
+    input validation
+    column filter

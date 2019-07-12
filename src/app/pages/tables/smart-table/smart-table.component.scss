@@ -5,6 +5,10 @@
     transform: translate3d(0, 0, 0);
   }
 
+  button[nbButton] {
+    margin: 0.5rem;
+  }
+
   ng2-smart-table ::ng-deep {
     .ng2-smart-action-add-add {
       background-color: nb-theme(button-filled-primary-background-color);

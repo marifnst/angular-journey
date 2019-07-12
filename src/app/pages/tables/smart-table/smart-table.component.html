@@ -4,6 +4,9 @@
   </nb-card-header>
 
   <nb-card-body>
+    <button *ngFor="let button of buttonList" nbButton [status]="buttonType" hero (click)="onClickButton(button)">
+      {{ button }}
+    </button>
     <ng2-smart-table 
       [settings]="settings" 
       [source]="source" 

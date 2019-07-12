@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
-
-// import { SmartTableData } from '../../../@core/data/smart-table';
-// import { SmartTableService } from '../../../@core/mock/smart-table.service';
+import { NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -15,7 +13,7 @@ export class SmartTableComponent {
 
   settings = {
     actions:{
-      add:true,
+      add:false,
       edit:true,
       delete:true
     },
@@ -40,6 +38,8 @@ export class SmartTableComponent {
   };  
 
   source: LocalDataSource = new LocalDataSource();
+  buttonType: NbComponentStatus = 'primary';
+  buttonList = ['Create', 'Export', 'Import'];
 
   // constructor(private service: SmartTableData) {
   //   const data = this.service.getData();
@@ -50,7 +50,6 @@ export class SmartTableComponent {
     // const data = this.service.getData();
     // this.source.load(data);
 
-    // this.settings.actions["add"] = false;
     this.globalService.getColumn().subscribe(resp => {
       this.settings = Object.assign({}, resp);
     });
@@ -59,7 +58,7 @@ export class SmartTableComponent {
       this.source.load(data);
     });
   }
-
+  
   async onCreateConfirm(event): Promise<any> {
     if (window.confirm('Are you sure you want to create?')) {
       await this.globalService.createData();
@@ -84,6 +83,14 @@ export class SmartTableComponent {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
+    }
+  }
+
+  onClickButton(buttonType): void {
+    console.log('on click ' + buttonType);
+    if (buttonType == 'Create') {
+      let tmpDataCreate = {id:'',firstName:'firstName onclick',lastName:'lastName onclick',username:'username onclick',email:'email onclick',age:'age onclick'};
+      this.source.append(tmpDataCreate);
     }
   }
 }
