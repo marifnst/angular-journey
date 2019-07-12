@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
-import { NbComponentStatus } from '@nebular/theme';
+import { NbComponentStatus, NbDialogService } from '@nebular/theme';
+import { DialogFormComponent } from '../../modal-overlays/dialog/dialog-form/dialog-form.component';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -40,13 +41,14 @@ export class SmartTableComponent {
   source: LocalDataSource = new LocalDataSource();
   buttonType: NbComponentStatus = 'primary';
   buttonList = ['Create', 'Export', 'Import'];
+  message: string;
 
   // constructor(private service: SmartTableData) {
   //   const data = this.service.getData();
   //   this.source.load(data);
   // }
 
-  constructor(protected globalService: SmartTableService) {
+  constructor(protected globalService: SmartTableService, private dialogService: NbDialogService) {
     // const data = this.service.getData();
     // this.source.load(data);
 
@@ -89,8 +91,19 @@ export class SmartTableComponent {
   onClickButton(buttonType): void {
     console.log('on click ' + buttonType);
     if (buttonType == 'Create') {
-      let tmpDataCreate = {id:'',firstName:'firstName onclick',lastName:'lastName onclick',username:'username onclick',email:'email onclick',age:'age onclick'};
-      this.source.append(tmpDataCreate);
+      // let tmpDataCreate = {id:'',firstName:'firstName onclick',lastName:'lastName onclick',username:'username onclick',email:'email onclick',age:'age onclick'};
+      // this.source.append(tmpDataCreate);
+      this.openDialog(buttonType);
     }
+  }
+
+  openDialog(buttonType:string) {
+    this.dialogService
+    .open(DialogFormComponent, {
+      context: {
+        title: 'Dari Table Component',
+        dialogType: buttonType
+      }
+    });
   }
 }

@@ -1,0 +1,40 @@
+{
+  "forms" : [
+    {
+      "type" : "text",
+      "placeholder" : "Id",
+      "shape" : "rectangle",
+      "fieldSize" : "large"
+    },
+    {
+      "type" : "text",
+      "placeholder" : "First Name",
+      "shape" : "rectangle",
+      "fieldSize" : "large"
+    },
+    {
+      "type" : "text",
+      "placeholder" : "Last Name",
+      "shape" : "rectangle",
+      "fieldSize" : "large"
+    },
+    {
+      "type" : "text",
+      "placeholder" : "Username",
+      "shape" : "rectangle",
+      "fieldSize" : "large"
+    },
+    {
+      "type" : "password",
+      "placeholder" : "E-mail",
+      "shape" : "rectangle",
+      "fieldSize" : "large"
+    },
+    {
+      "type" : "text",
+      "placeholder" : "Age",
+      "shape" : "rectangle",
+      "fieldSize" : "large"
+    }
+  ]
+}

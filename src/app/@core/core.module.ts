@@ -51,6 +51,7 @@ import { StatsProgressBarService } from './mock/stats-progress-bar.service';
 import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { FormDynamicService } from '../pages/forms/form-dynamic/form-dynamic.service';
 
 const socialLinks = [
   {
@@ -90,6 +91,7 @@ const DATA_SERVICES = [
   { provide: StatsProgressBarData, useClass: StatsProgressBarService },
   { provide: VisitorsAnalyticsData, useClass: VisitorsAnalyticsService },
   { provide: SecurityCamerasData, useClass: SecurityCamerasService },
+  { provide: SmartTableData, useClass: FormDynamicService }
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {

@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Security',
-    icon: 'edit-2-outline',
+    icon: 'unlock-outline',
     children: [
       {
         title: 'Role Management',
@@ -31,8 +31,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     children: [
       {
-        title: 'Form Report',
-        link: '/pages/forms/inputs',
+        title: 'Form Input',
+        link: '/pages/forms/dynamic',
       },
       {
         title: 'Table Report',

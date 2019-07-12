@@ -1,3 +1,8 @@
+to explore
+    create global service
+    call other module
+    call other component
+    dynamic menu
 security
     user management
     role management
