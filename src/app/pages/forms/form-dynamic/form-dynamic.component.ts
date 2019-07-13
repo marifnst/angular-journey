@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormDynamicService } from './form-dynamic.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'ngx-form-dynamic',
@@ -10,15 +11,20 @@ import { FormDynamicService } from './form-dynamic.service';
 export class FormDynamicComponent {
 
   payload: null;
+  profileForm = new FormGroup({});
 
   constructor(protected formDynamicService : FormDynamicService) {
     this.formDynamicService.getForm().subscribe(resp => {
       this.payload = resp;
-      console.log(this.payload);
+      resp["forms"].forEach(element => {
+        // console.log(element.name);
+        this.profileForm.addControl(element.name, new FormControl(''));
+      });
+      // console.log(this.payload);
     });    
   }
 
-  onClickButton() {
-    console.log('on click button');
+  onSubmit() {
+    console.log('on click button ' + this.profileForm.controls["username"].value);
   }
 }

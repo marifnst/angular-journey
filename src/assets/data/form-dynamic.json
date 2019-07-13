@@ -1,36 +1,42 @@
 {
   "forms" : [
     {
+      "name" : "id",
       "type" : "text",
       "placeholder" : "Id",
       "shape" : "rectangle",
       "fieldSize" : "large"
     },
     {
+      "name" : "firstname",
       "type" : "text",
       "placeholder" : "First Name",
       "shape" : "rectangle",
       "fieldSize" : "large"
     },
     {
+      "name" : "lastname",
       "type" : "text",
       "placeholder" : "Last Name",
       "shape" : "rectangle",
       "fieldSize" : "large"
     },
     {
+      "name" : "username",
       "type" : "text",
       "placeholder" : "Username",
       "shape" : "rectangle",
       "fieldSize" : "large"
     },
     {
+      "name" : "email",
       "type" : "password",
       "placeholder" : "E-mail",
       "shape" : "rectangle",
       "fieldSize" : "large"
     },
     {
+      "name" : "age",
       "type" : "text",
       "placeholder" : "Age",
       "shape" : "rectangle",

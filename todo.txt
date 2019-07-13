@@ -3,6 +3,7 @@ to explore
     call other module
     call other component
     dynamic menu
+    web socket
 security
     user management
     role management
