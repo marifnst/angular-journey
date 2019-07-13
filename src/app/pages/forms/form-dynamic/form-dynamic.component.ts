@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class FormDynamicComponent {
 
-  payload: null;
+  payload: {};
   profileForm = new FormGroup({});
 
   constructor(protected formDynamicService : FormDynamicService) {
@@ -24,7 +24,10 @@ export class FormDynamicComponent {
     });    
   }
 
-  onSubmit() {
-    console.log('on click button ' + this.profileForm.controls["username"].value);
+  onSubmit() {    
+    this.payload["forms"].forEach(element => {
+      // console.log(element.name);
+      console.log('on click button ' + this.profileForm.controls[element.name].value);
+    });
   }
 }
