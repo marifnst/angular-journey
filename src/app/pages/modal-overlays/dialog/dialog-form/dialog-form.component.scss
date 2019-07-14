@@ -2,7 +2,16 @@
 
 @include nb-install-component() {
   nb-card {
-    max-width: 600px;
-    max-height: 500px;
+    max-width: 800px;
+    max-height: 700px;
+  }
+
+  nb-card-body {
+    overflow: visible;
+    padding-top: 0;
+  
+    > * {
+      margin-top: 1rem;
+    }
   }
 }

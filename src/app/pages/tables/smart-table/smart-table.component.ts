@@ -98,12 +98,15 @@ export class SmartTableComponent {
   }
 
   openDialog(buttonType:string) {
+    let output = {};
     this.dialogService
     .open(DialogFormComponent, {
       context: {
         title: 'Dari Table Component',
         dialogType: buttonType
       }
+    }).onClose.subscribe(resp => {
+      console.log('dari on clos subscribe ' + resp["username"]);
     });
   }
 }

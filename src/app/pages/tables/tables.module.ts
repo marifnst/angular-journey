@@ -7,6 +7,8 @@ import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
 import { DialogFormComponent } from '../modal-overlays/dialog/dialog-form/dialog-form.component';
 import { ModalOverlaysModule } from '../modal-overlays/modal-overlays.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormDynamicComponent } from '../forms/form-dynamic/form-dynamic.component';
 
 @NgModule({
   imports: [
@@ -18,15 +20,19 @@ import { ModalOverlaysModule } from '../modal-overlays/modal-overlays.module';
     TablesRoutingModule,
     Ng2SmartTableModule,
     NbButtonModule,    
-    ModalOverlaysModule
+    ModalOverlaysModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     ...routedComponents,
     FsIconComponent,   
-    DialogFormComponent 
+    DialogFormComponent,
+    FormDynamicComponent 
   ],
   entryComponents:[ 
-    DialogFormComponent   
+    DialogFormComponent,
+    FormDynamicComponent
   ]
 })
 export class TablesModule { }

@@ -9,8 +9,9 @@ export class DialogFormService {
 
   constructor(private http:HttpClient) {}
 
-  getCreateForm(): Observable<any> {
-    return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
+  getCreateForm():Observable<any> {
+    console.log('get form');
+    return this.http.get("./assets/data/form-dynamic.json", {responseType: 'json'});
   }
 
 }

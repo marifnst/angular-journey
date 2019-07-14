@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NbButtonModule,
   NbCardModule,
@@ -70,7 +70,7 @@ const MODULES = [
   NbButtonModule,
   NbInputModule,
   NbSelectModule,
-  NbTooltipModule,
+  NbTooltipModule,  
 ];
 
 const SERVICES = [

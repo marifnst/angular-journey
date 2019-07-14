@@ -2,7 +2,7 @@
   "actions":{
     "add" : false,
     "edit" : true,
-    "delete" : false
+    "delete" : true
   },
   "add": {
     "addButtonContent": "<i class='nb-plus'></i>",
