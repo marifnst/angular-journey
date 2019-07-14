@@ -46,5 +46,8 @@ import { FormsModule as FormsModuleAngular, ReactiveFormsModule } from '@angular
     DatepickerComponent,
     FormDynamicComponent
   ],
+  exports: [
+    FormDynamicComponent
+  ]  
 })
 export class FormsModule { }

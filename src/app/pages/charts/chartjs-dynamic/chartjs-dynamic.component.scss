@@ -1,0 +1,20 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  ngx-chartjs-pie-dynamic,
+  ngx-chartjs-bar-dynamic,
+  ngx-chartjs-line-dynamic,
+  ngx-chartjs-multiple-xaxis-dynamic,
+  ngx-chartjs-bar-horizontal-dynamic,
+  ngx-chartjs-radar-dynamic {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+
+    ::ng-deep chart {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

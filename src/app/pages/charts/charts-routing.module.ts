@@ -5,20 +5,29 @@ import { ChartsComponent } from './charts.component';
 import { EchartsComponent } from './echarts/echarts.component';
 import { D3Component } from './d3/d3.component';
 import { ChartjsComponent } from './chartjs/chartjs.component';
+import { ChartjsDynamicComponent } from './chartjs-dynamic/chartjs-dynamic.component';
 
 const routes: Routes = [{
   path: '',
   component: ChartsComponent,
-  children: [{
-    path: 'echarts',
-    component: EchartsComponent,
-  }, {
-    path: 'd3',
-    component: D3Component,
-  }, {
-    path: 'chartjs',
-    component: ChartjsComponent,
-  }],
+  children: [
+    {
+      path: 'echarts',
+      component: EchartsComponent,
+    }, 
+    {
+      path: 'd3',
+      component: D3Component,
+    }, 
+    {
+      path: 'chartjs',
+      component: ChartjsComponent,
+    }, 
+    {
+      path: 'chartjs-dynamic',
+      component: ChartjsDynamicComponent,
+    }
+  ],
 }];
 
 @NgModule({
@@ -32,4 +41,5 @@ export const routedComponents = [
   EchartsComponent,
   D3Component,
   ChartjsComponent,
+  ChartjsDynamicComponent
 ];

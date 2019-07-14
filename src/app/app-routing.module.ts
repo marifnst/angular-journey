@@ -45,7 +45,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: '', redirectTo: '/pages/charts/chartjs-dynamic', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 ];
 

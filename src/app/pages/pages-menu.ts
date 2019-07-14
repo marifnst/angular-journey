@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
     icon: 'shopping-cart-outline',
-    link: '/pages/dashboard',
+    link: '/pages/charts/chartjs-dynamic',
     home: true,
   },
   {

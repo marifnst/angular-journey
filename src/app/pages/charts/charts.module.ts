@@ -26,6 +26,12 @@ import { EchartsMultipleXaxisComponent } from './echarts/echarts-multiple-xaxis.
 import { EchartsAreaStackComponent } from './echarts/echarts-area-stack.component';
 import { EchartsBarAnimationComponent } from './echarts/echarts-bar-animation.component';
 import { EchartsRadarComponent } from './echarts/echarts-radar.component';
+import { ChartjsDynamicBarComponent } from './chartjs-dynamic/chartjs-dynamic-bar.component';
+import { ChartjsDynamicLineComponent } from './chartjs-dynamic/chartjs-dynamic-line.component';
+import { ChartjsDynamicPieComponent } from './chartjs-dynamic/chartjs-dynamic-pie.component';
+import { ChartjsDynamicMultipleXaxisComponent } from './chartjs-dynamic/chartjs-dynamic-multiple-xaxis.component';
+import { ChartjsDynamicBarHorizontalComponent } from './chartjs-dynamic/chartjs-dynamic-bar-horizontal.component';
+import { ChartjsDynamicRadarComponent } from './chartjs-dynamic/chartjs-dynamic-radar.component';
 
 const components = [
   ChartjsBarComponent,
@@ -47,6 +53,12 @@ const components = [
   EchartsAreaStackComponent,
   EchartsBarAnimationComponent,
   EchartsRadarComponent,
+  ChartjsDynamicBarComponent,
+  ChartjsDynamicLineComponent,
+  ChartjsDynamicPieComponent,
+  ChartjsDynamicMultipleXaxisComponent,
+  ChartjsDynamicBarHorizontalComponent,
+  ChartjsDynamicRadarComponent,
 ];
 
 @NgModule({

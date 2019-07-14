@@ -8,7 +8,6 @@ import { FsIconComponent } from './tree-grid/tree-grid.component';
 import { DialogFormComponent } from '../modal-overlays/dialog/dialog-form/dialog-form.component';
 import { ModalOverlaysModule } from '../modal-overlays/modal-overlays.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormDynamicComponent } from '../forms/form-dynamic/form-dynamic.component';
 
 @NgModule({
   imports: [
@@ -28,11 +27,9 @@ import { FormDynamicComponent } from '../forms/form-dynamic/form-dynamic.compone
     ...routedComponents,
     FsIconComponent,   
     DialogFormComponent,
-    FormDynamicComponent 
   ],
   entryComponents:[ 
     DialogFormComponent,
-    FormDynamicComponent
   ]
 })
 export class TablesModule { }

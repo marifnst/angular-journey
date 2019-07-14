@@ -1,0 +1,30 @@
+{
+    "data" : {
+        "labels": ["Muhammad", "Arif", "Nasution", "Jakarta"],
+        "datasets": [{
+            "data": [100, 200, 300, 400],
+            "backgroundColor": ["#598bff","#42aaff","#2ce69b", "#f4a8a7"]
+        }]
+    },
+    "options" : {
+        "maintainAspectRatio": false,
+        "responsive": true,
+        "scales": {
+          "xAxes": [
+            {
+              "display": false
+            }
+          ],
+          "yAxes": [
+            {
+              "display": false
+            }
+          ]
+        },
+        "legend": {
+          "labels": {
+            "fontColor": "#1a2138"
+          }
+        }
+    }
+}

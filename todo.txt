@@ -4,10 +4,15 @@ to explore
     call other component
     dynamic menu
     web socket
+dashboard
+    chart
+    chart from json    
 security
     user management
     role management
     menu management
+form
+    datepicker
 table
     add
     edit

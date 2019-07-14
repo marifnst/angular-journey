@@ -98,7 +98,6 @@ export class SmartTableComponent {
   }
 
   openDialog(buttonType:string) {
-    let output = {};
     this.dialogService
     .open(DialogFormComponent, {
       context: {
