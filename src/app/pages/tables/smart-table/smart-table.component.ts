@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
 import { NbComponentStatus, NbDialogService } from '@nebular/theme';
@@ -48,9 +49,17 @@ export class SmartTableComponent {
   //   this.source.load(data);
   // }
 
-  constructor(protected globalService: SmartTableService, private dialogService: NbDialogService) {
+  constructor(
+    protected globalService: SmartTableService, 
+    private dialogService: NbDialogService,
+    router : ActivatedRoute
+    ) {
     // const data = this.service.getData();
     // this.source.load(data);
+
+    router.paramMap.subscribe(params => {
+      console.log(params.get("templateCode"));
+    });
 
     this.globalService.getColumn().subscribe(resp => {
       this.settings = Object.assign({}, resp);
