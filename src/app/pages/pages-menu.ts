@@ -32,7 +32,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Form Input',
-        link: '/pages/forms/dynamic',
+        link: '/pages/forms/dynamic/templateCode',
       },
       {
         title: 'Table Report',
