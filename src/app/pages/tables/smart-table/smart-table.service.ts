@@ -9,17 +9,41 @@ export class SmartTableService {
 
   constructor(private http:HttpClient) {}
 
-  getColumn(): Observable<any> {
-    return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
+  // getColumn(): Observable<any> {
+  //   return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
+  // }
+
+  getColumn(module:string, templateCode:string): Observable<any> {
+    if (templateCode == 'role_management') {
+      return this.http.get("assets/data/role-management.json", {responseType: 'json'});
+    } else if (templateCode == 'user_management') {
+      return this.http.get("assets/data/user-management.json", {responseType: 'json'});
+    } else if (templateCode == 'menu_management') {
+      return this.http.get("assets/data/menu-management.json", {responseType: 'json'});
+    } else {
+      return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
+    }
   }
 
   // emulating request to the server
-  getData(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.generateData());
-      }, 2000);
-    });
+  // getData(): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve(this.generateData());
+  //     }, 2000);
+  //   });
+  // }
+
+  getData(module:string, templateCode:string): Promise<any> {
+    if (templateCode == 'sample_report') {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(this.generateData());
+        }, 2000);
+      });
+    } else {
+      return null;
+    }
   }
 
   async createData(): Promise<any> {

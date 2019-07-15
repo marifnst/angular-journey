@@ -4,6 +4,8 @@ to explore
     call other component
     dynamic menu
     web socket
+profile
+    user profile
 dashboard
     chart
     chart from json    

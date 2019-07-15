@@ -10,14 +10,14 @@ const routes: Routes = [{
   component: TablesComponent,
   children: [
     {
-      path: 'smart-table/:templateCode',
+      path: 'smart-table/:module/:templateCode',
       component: SmartTableComponent,
     },
     {
       path: 'tree-grid',
       component: TreeGridComponent,
     },
-  ],
+  ],  
 }];
 
 @NgModule({

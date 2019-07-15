@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
 import { NbComponentStatus, NbDialogService } from '@nebular/theme';
@@ -39,6 +39,8 @@ export class SmartTableComponent {
     },
   };  
 
+  module = "";
+  templateCode = "";
   source: LocalDataSource = new LocalDataSource();
   buttonType: NbComponentStatus = 'primary';
   buttonList = ['Create', 'Export', 'Import'];
@@ -52,22 +54,34 @@ export class SmartTableComponent {
   constructor(
     protected globalService: SmartTableService, 
     private dialogService: NbDialogService,
-    router : ActivatedRoute
+    router : Router,
+    activatedRoute : ActivatedRoute
     ) {
     // const data = this.service.getData();
     // this.source.load(data);
 
-    router.paramMap.subscribe(params => {
+    router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+    }
+    activatedRoute.paramMap.subscribe(params => {
       console.log(params.get("templateCode"));
+      this.module = params.get("module");
+      this.templateCode = params.get("templateCode");
     });
 
-    this.globalService.getColumn().subscribe(resp => {
+    // this.globalService.getColumn().subscribe(resp => {
+    //   this.settings = Object.assign({}, resp);
+    // });
+    this.globalService.getColumn(this.module, this.templateCode).subscribe(resp => {
       this.settings = Object.assign({}, resp);
     });
 
-    this.globalService.getData().then((data) => {
-      this.source.load(data);
-    });
+    // this.globalService.getData().then((data) => {
+    //   this.source.load(data);
+    // });
+    // this.globalService.getData(this.module, this.templateCode).then((data) => {
+    //   this.source.load(data);
+    // });
   }
   
   async onCreateConfirm(event): Promise<any> {

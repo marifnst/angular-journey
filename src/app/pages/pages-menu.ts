@@ -17,12 +17,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Role Management',
+        link: '/pages/tables/smart-table/admin/role_management',
       },
       {
         title: 'User Management',
+        link: '/pages/tables/smart-table/admin/user_management',
       },
       {
         title: 'Menu Management',
+        link: '/pages/tables/smart-table/admin/menu_management',
       },
     ],
   },
@@ -32,11 +35,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Form Input',
-        link: '/pages/forms/dynamic/templateCode',
+        link: '/pages/forms/dynamic',
       },
       {
         title: 'Table Report',
-        link: '/pages/tables/smart-table',
+        link: '/pages/tables/smart-table/user/sample_report',
       },
     ],
   },
