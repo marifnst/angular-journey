@@ -13,7 +13,9 @@ security
     user management
     role management
     menu management
+    logs
 form
+    combobox
     datepicker
 table
     add

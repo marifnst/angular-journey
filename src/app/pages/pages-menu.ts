@@ -25,7 +25,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Menu Management',
-        link: '/pages/tables/smart-table/admin/menu_management',
+        link: '/pages/tables/tree-grid-dynamic',
       },
     ],
   },
