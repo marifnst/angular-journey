@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
@@ -45,6 +45,8 @@ export class SmartTableComponent {
   buttonType: NbComponentStatus = 'primary';
   buttonList = ['Create', 'Export', 'Import'];
   message: string;
+  @ViewChild("file", {static : true}) importFile : ElementRef;
+  importData: File = null;
 
   // constructor(private service: SmartTableData) {
   //   const data = this.service.getData();
@@ -118,6 +120,17 @@ export class SmartTableComponent {
       // this.source.append(tmpDataCreate);
       this.openDialog(buttonType);
     }
+
+    switch (buttonType) {
+      case "Create": {
+        this.openDialog(buttonType);
+        break;
+      }
+      case "Import": {
+        this.importFile.nativeElement.click();
+        break;
+      }
+    }
   }
 
   openDialog(buttonType:string) {
@@ -130,5 +143,30 @@ export class SmartTableComponent {
     }).onClose.subscribe(resp => {
       console.log('dari on clos subscribe ' + resp["username"]);
     });
+  }
+
+  importProcess(fileInput: any) {
+    this.importData = <File> fileInput.target.files[0];
+
+    const formData = new FormData();
+    formData.append('files', this.importData);
+    console.log('import process : ' + this.importData.name);
+
+    // https://w3path.com/new-angular-8-file-upload-or-image-upload/
+    // this.fileUploadProgress = '0%';
+    // this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+    //   reportProgress: true,
+    //   observe: 'events'   
+    // })
+    // .subscribe(events => {
+    //   if(events.type === HttpEventType.UploadProgress) {
+    //     this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
+    //     console.log(this.fileUploadProgress);
+    //   } else if(events.type === HttpEventType.Response) {
+    //     this.fileUploadProgress = '';
+    //     console.log(events.body);          
+    //     alert('SUCCESS !!');
+    //   }
+    // }
   }
 }

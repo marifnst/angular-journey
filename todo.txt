@@ -4,6 +4,8 @@ to explore
     call other component
     dynamic menu
     web socket
+    security, interceptor, session, state management
+login
 profile
     user profile
 dashboard
@@ -12,7 +14,7 @@ dashboard
 security
     user management
     role management
-    menu management
+    menu management --> tree-grid
     logs
 form
     combobox
