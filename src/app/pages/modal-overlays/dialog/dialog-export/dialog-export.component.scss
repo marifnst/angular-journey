@@ -1,0 +1,16 @@
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card {
+    max-width: 800px;
+    max-height: 700px;
+  }
+
+  nb-progress-bar {
+    margin-top: 1rem;
+  }
+
+  button {
+    margin: 1rem;
+  }
+}

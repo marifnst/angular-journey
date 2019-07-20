@@ -11,6 +11,7 @@ import {
   NbTabsetModule,
   NbTooltipModule,
   NbWindowModule,
+  NbProgressBarModule,
 } from '@nebular/theme';
 
 // modules
@@ -71,6 +72,7 @@ const MODULES = [
   NbInputModule,
   NbSelectModule,
   NbTooltipModule,  
+  NbProgressBarModule
 ];
 
 const SERVICES = [

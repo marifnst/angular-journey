@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-header>Export</nb-card-header>
+  <nb-card-body>
+    <nb-select selected="export_type">
+      <nb-option value="export_type">- Type -</nb-option>
+      <nb-option value="xls">Xls</nb-option>
+      <nb-option value="xlsx">Xlsx</nb-option>
+    </nb-select>
+    <button nbButton [status]="buttonType" (click)="onClickProcess()" hero>Process</button>
+    <nb-progress-bar [value]="exportProgress" status="primary" size="giant" [displayValue]="true"></nb-progress-bar>
+  </nb-card-body>
+  <nb-card-footer></nb-card-footer>
+</nb-card>

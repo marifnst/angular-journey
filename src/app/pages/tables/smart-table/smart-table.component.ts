@@ -2,8 +2,9 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from './smart-table.service';
-import { NbComponentStatus, NbDialogService } from '@nebular/theme';
+import { NbComponentStatus, NbDialogService, NbWindowService } from '@nebular/theme';
 import { DialogFormComponent } from '../../modal-overlays/dialog/dialog-form/dialog-form.component';
+import { DialogExportComponent } from '../../modal-overlays/dialog/dialog-export/dialog-export.component';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -56,6 +57,7 @@ export class SmartTableComponent {
   constructor(
     protected globalService: SmartTableService, 
     private dialogService: NbDialogService,
+    private windowService: NbWindowService,
     router : Router,
     activatedRoute : ActivatedRoute
     ) {
@@ -81,9 +83,9 @@ export class SmartTableComponent {
     // this.globalService.getData().then((data) => {
     //   this.source.load(data);
     // });
-    // this.globalService.getData(this.module, this.templateCode).then((data) => {
-    //   this.source.load(data);
-    // });
+    this.globalService.getData(this.module, this.templateCode).then((data) => {
+      this.source.load(data);
+    });
   }
   
   async onCreateConfirm(event): Promise<any> {
@@ -115,15 +117,17 @@ export class SmartTableComponent {
 
   onClickButton(buttonType): void {
     console.log('on click ' + buttonType);
-    // if (buttonType == 'Create') {
-      // let tmpDataCreate = {id:'',firstName:'firstName onclick',lastName:'lastName onclick',username:'username onclick',email:'email onclick',age:'age onclick'};
-      // this.source.append(tmpDataCreate);
-    //   this.openDialog(buttonType);
-    // }
-
     switch (buttonType) {
       case "Create": {
         this.openDialog(buttonType);
+        break;
+      }
+      case "Export": {
+        // this.windowService.open(WindowFormDynamicComponent, { title: `Export` }).onClose.subscribe(resp => {
+        //   console.log('on close window');
+        //   this.windowService = null;
+        // });
+        this.openExportDialog();
         break;
       }
       case "Import": {
@@ -144,6 +148,15 @@ export class SmartTableComponent {
       if (resp["status"] == "insert") {
         console.log('dari on clos subscribe ' + resp["username"]);
       }      
+    });
+  }
+
+  openExportDialog() {
+    this.dialogService
+    .open(DialogExportComponent, {
+      context: {}
+    }).onClose.subscribe(resp => {
+      console.log('on close open export dialog');
     });
   }
 

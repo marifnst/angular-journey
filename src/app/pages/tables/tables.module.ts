@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule, NbButtonModule, } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule, NbButtonModule, NbProgressBarModule, NbSelectModule, } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
 import { DialogFormComponent } from '../modal-overlays/dialog/dialog-form/dialog-form.component';
+import { DialogExportComponent } from '../modal-overlays/dialog/dialog-export/dialog-export.component';
 import { ModalOverlaysModule } from '../modal-overlays/modal-overlays.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -18,7 +19,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ThemeModule,
     TablesRoutingModule,
     Ng2SmartTableModule,
-    NbButtonModule,    
+    NbButtonModule,
+    NbSelectModule,
+    NbProgressBarModule,
     ModalOverlaysModule,
     FormsModule,
     ReactiveFormsModule,
@@ -27,9 +30,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ...routedComponents,
     FsIconComponent,   
     DialogFormComponent,
+    DialogExportComponent    
   ],
   entryComponents:[ 
     DialogFormComponent,
+    DialogExportComponent
   ]
 })
 export class TablesModule { }

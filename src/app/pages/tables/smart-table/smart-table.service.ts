@@ -34,11 +34,11 @@ export class SmartTableService {
   //   });
   // }
 
-  getData(module:string, templateCode:string): Promise<any> {
+  async getData(module:string, templateCode:string): Promise<any> {
     if (templateCode == 'sample_report') {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve(this.generateData());
+          resolve(this.generateDataNew(module, templateCode));
         }, 2000);
       });
     } else {
@@ -76,11 +76,27 @@ export class SmartTableService {
     };
   }
 
+  async generateDataNew(module, templateCode): Promise<any> {
+    let data = [];
+    // for (let i = 0; i < SmartTableService.DATA_SIZE; i++) {
+    //   let tmpData = this.getNewExampleObj(i);
+    //   data.push(tmpData);
+    // }
+    await this.http.get("assets/data/" + module + "-" + templateCode + "-data.json", {responseType: 'json'}).toPromise().then(resp => {
+      data = resp["data"];
+    });    
+    return data;
+  }
+
   protected generateData(): Array<any> {
-    const data = [];
-    for (let i = 0; i < SmartTableService.DATA_SIZE; i++) {
-      data.push(this.getNewExampleObj(i));
-    }
+    let data = [];
+    // for (let i = 0; i < SmartTableService.DATA_SIZE; i++) {
+    //   let tmpData = this.getNewExampleObj(i);
+    //   data.push(tmpData);
+    // }
+    this.http.get("assets/data/sample_report-data.json", {responseType: 'json'}).subscribe(resp => {
+      data = resp["data"];
+    });    
     return data;
   }
 }
