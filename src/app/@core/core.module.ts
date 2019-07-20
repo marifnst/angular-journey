@@ -10,6 +10,7 @@ import {
   LayoutService,
   PlayerService,
   StateService,
+  GeneralService
 } from './utils';
 import { UserData } from './data/users';
 import { ElectricityData } from './data/electricity';
@@ -140,11 +141,12 @@ export const NB_CORE_PROVIDERS = [
 
   {
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
-  },
+  },  
   AnalyticsService,
   LayoutService,
   PlayerService,
   StateService,
+  GeneralService,
 ];
 
 @NgModule({
