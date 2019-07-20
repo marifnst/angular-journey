@@ -115,11 +115,11 @@ export class SmartTableComponent {
 
   onClickButton(buttonType): void {
     console.log('on click ' + buttonType);
-    if (buttonType == 'Create') {
+    // if (buttonType == 'Create') {
       // let tmpDataCreate = {id:'',firstName:'firstName onclick',lastName:'lastName onclick',username:'username onclick',email:'email onclick',age:'age onclick'};
       // this.source.append(tmpDataCreate);
-      this.openDialog(buttonType);
-    }
+    //   this.openDialog(buttonType);
+    // }
 
     switch (buttonType) {
       case "Create": {
@@ -141,7 +141,9 @@ export class SmartTableComponent {
         dialogType: buttonType
       }
     }).onClose.subscribe(resp => {
-      console.log('dari on clos subscribe ' + resp["username"]);
+      if (resp["status"] == "insert") {
+        console.log('dari on clos subscribe ' + resp["username"]);
+      }      
     });
   }
 

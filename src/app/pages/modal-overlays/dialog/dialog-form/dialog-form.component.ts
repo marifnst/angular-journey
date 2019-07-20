@@ -28,7 +28,7 @@ export class DialogFormComponent {
   }
 
   onClickGeneral() {
-    let output = {};
+    let output = {"status" : "insert"};
     if (this.dialogType == 'Create') {
       this.payload["forms"].forEach(element => {
         // console.log(element.name);
@@ -42,6 +42,7 @@ export class DialogFormComponent {
   }
 
   dismiss() {
-    this.ref.close();
+    let output = {"status" : "cancel"};
+    this.ref.close(output);
   }
 }
