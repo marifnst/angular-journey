@@ -43,6 +43,7 @@
     "@nebular/auth": "4.1.0",
     "@nebular/bootstrap": "4.1.0",
     "@nebular/eva-icons": "4.1.0",
+    "@nebular/moment": "^4.1.2",
     "@nebular/security": "4.1.0",
     "@nebular/theme": "4.1.0",
     "@swimlane/ngx-charts": "^10.0.0",

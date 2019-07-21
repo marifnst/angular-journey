@@ -20,6 +20,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormDynamicComponent } from './form-dynamic/form-dynamic.component';
 import { FormsModule as FormsModuleAngular, ReactiveFormsModule } from '@angular/forms';
+import { NbMomentDateModule } from '@nebular/moment';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { FormsModule as FormsModuleAngular, ReactiveFormsModule } from '@angular
     NbSelectModule,
     NbIconModule,
     FormsModuleAngular,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NbMomentDateModule
   ],
   declarations: [
     FormsComponent,

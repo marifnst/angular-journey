@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { FormDynamicService } from './form-dynamic.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { NbDatepickerComponent } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-form-dynamic',
@@ -12,6 +13,7 @@ export class FormDynamicComponent {
 
   payload: {};
   profileForm = new FormGroup({});
+  @ViewChildren('formpicker') components:QueryList<NbDatepickerComponent<any>>;
 
   constructor(protected formDynamicService : FormDynamicService) {
     this.formDynamicService.getForm().subscribe(resp => {

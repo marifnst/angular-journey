@@ -41,6 +41,24 @@
       "placeholder" : "Age",
       "shape" : "rectangle",
       "fieldSize" : "large"
+    },
+    {
+      "name" : "datepicker",
+      "type" : "",
+      "placeholder" : "Date",
+      "shape" : "rectangle",
+      "fieldSize" : "large",
+      "datepicker" : "formpicker",
+      "datepicker_format" : "MM/dd/yyyy"
+    },
+    {
+      "name" : "datepicker2",
+      "type" : "",
+      "placeholder" : "Date",
+      "shape" : "rectangle",
+      "fieldSize" : "large",
+      "datepicker" : "formpicker",
+      "datepicker_format" : "yyyy-MM-dd"
     }
   ]
 }
