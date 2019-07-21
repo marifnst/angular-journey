@@ -19,8 +19,12 @@ export class FormDynamicComponent {
     this.formDynamicService.getForm().subscribe(resp => {
       this.payload = resp;
       resp["forms"].forEach(element => {
-        // console.log(element.name);
-        this.profileForm.addControl(element.name, new FormControl(''));
+        // console.log(element.name);i
+        if (!!element.select) {
+          this.profileForm.addControl(element.name, new FormControl(element.placeholder));
+        } else {
+          this.profileForm.addControl(element.name, new FormControl(''));
+        }        
       });
       // console.log(this.payload);
     });    

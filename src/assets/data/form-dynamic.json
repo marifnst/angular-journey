@@ -43,13 +43,30 @@
       "fieldSize" : "large"
     },
     {
-      "name" : "datepicker",
+      "name" : "select",
+      "type" : "",
+      "placeholder" : "- Sample Select -",
+      "shape" : "rectangle",
+      "fieldSize" : "large",
+      "select" : [
+        {
+          "title" : "option1",
+          "value" : "Option One"
+        },
+        {
+          "title" : "option2",
+          "value" : "Option Two"
+        }
+      ]
+    },
+    {
+      "name" : "datepicker1",
       "type" : "",
       "placeholder" : "Date",
       "shape" : "rectangle",
       "fieldSize" : "large",
       "datepicker" : "formpicker",
-      "datepicker_format" : "MM/dd/yyyy"
+      "datepicker_format" : "yyyy/MM/dd"
     },
     {
       "name" : "datepicker2",

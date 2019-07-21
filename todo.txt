@@ -5,6 +5,7 @@ to explore
     dynamic menu
     web socket
     security, interceptor, session, state management
+    spinner
 login
 profile
     user profile
