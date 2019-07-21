@@ -41,6 +41,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Table Report',
         link: '/pages/tables/smart-table/user/sample_report',
       },
+      {
+        title: 'Table Report Long',
+        link: '/pages/tables/smart-table/user/sample_report_long',
+      }
     ],
   },
 ];

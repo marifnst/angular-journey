@@ -16,13 +16,15 @@ import { GeneralService } from '../@core/utils';
 })
 export class PagesComponent {
 
-  // menu = MENU_ITEMS;
-  menu = [];
+  menu = MENU_ITEMS;
+  /*menu = [];
 
   constructor(generalService:GeneralService) {
-    console.log('PagesRoutingModule');
-    generalService.getMenu().then(resp => {
-      this.menu = resp;
-    });    
-  }
+    // console.log('PagesRoutingModule : ' + this.menu.length);
+    if (this.menu.length == 0) {
+      generalService.getMenu().then(resp => {
+        this.menu = resp;
+      });
+    }
+  }*/
 }

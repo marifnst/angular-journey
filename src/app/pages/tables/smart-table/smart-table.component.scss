@@ -2,7 +2,7 @@
 
 @include nb-install-component() {
   nb-card {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);    
   }
 
   button[nbButton] {
@@ -10,6 +10,12 @@
   }
 
   ng2-smart-table ::ng-deep {
+    table {
+      display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+   }
+
     .ng2-smart-action-add-add {
       background-color: nb-theme(button-filled-primary-background-color);
       border-color: nb-theme(button-filled-primary-border-color);

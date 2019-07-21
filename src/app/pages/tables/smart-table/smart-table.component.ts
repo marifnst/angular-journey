@@ -84,7 +84,9 @@ export class SmartTableComponent {
     //   this.source.load(data);
     // });
     this.globalService.getData(this.module, this.templateCode).then((data) => {
-      this.source.load(data);
+      if (data != null) {
+        this.source.load(data);
+      }      
     });
   }
   

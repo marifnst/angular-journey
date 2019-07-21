@@ -1,0 +1,97 @@
+{
+  "actions":{
+    "add" : false,
+    "edit" : true,
+    "delete" : true
+  },
+  "add": {
+    "addButtonContent": "<i class='nb-plus'></i>",
+    "createButtonContent": "<i class='nb-checkmark'></i>",
+    "cancelButtonContent": "<i class='nb-close'></i>",
+    "confirmCreate": true
+  },
+  "edit": {
+    "editButtonContent": "<i class='nb-edit'></i>",
+    "saveButtonContent": "<i class=\"nb-checkmark\"></i>",
+    "cancelButtonContent": "<i class=\"nb-close\"></i>",
+    "confirmSave": true
+  },
+  "delete": {
+    "deleteButtonContent": "<i class=\"nb-trash\"></i>",
+    "confirmDelete": true
+  },
+  "columns": {
+    "id": {
+      "title": "ID",
+      "type": "number"
+    },
+    "firstName": {
+      "title": "First Name",
+      "type": "string"
+    },
+    "lastName": {
+      "title": "Last Name",
+      "type": "string"
+    },
+    "username": {
+      "title": "Username",
+      "type": "string"
+    },
+    "email": {
+      "title": "E-mail",
+      "type": "string"
+    },
+    "age": {
+      "title": "Age",
+      "type": "number"
+    },
+    "id1": {
+      "title": "ID",
+      "type": "number"
+    },
+    "firstName1": {
+      "title": "First Name",
+      "type": "string"
+    },
+    "lastName1": {
+      "title": "Last Name",
+      "type": "string"
+    },
+    "username1": {
+      "title": "Username",
+      "type": "string"
+    },
+    "email1": {
+      "title": "E-mail",
+      "type": "string"
+    },
+    "age1": {
+      "title": "Age",
+      "type": "number"
+    },
+    "id2": {
+      "title": "ID",
+      "type": "number"
+    },
+    "firstName2": {
+      "title": "First Name",
+      "type": "string"
+    },
+    "lastName2": {
+      "title": "Last Name",
+      "type": "string"
+    },
+    "username2": {
+      "title": "Username",
+      "type": "string"
+    },
+    "email2": {
+      "title": "E-mail",
+      "type": "string"
+    },
+    "age2": {
+      "title": "Age",
+      "type": "number"
+    }
+  }
+}

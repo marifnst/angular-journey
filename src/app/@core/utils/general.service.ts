@@ -8,7 +8,7 @@ export class GeneralService {
   }
 
   async getMenu():Promise<any> {
-    console.log('get menu GeneralService');
+    // console.log('get menu GeneralService');
     let output = [];
     await this.httpClient.get("assets/data/menu.json", {responseType: 'json'}).toPromise().then(resp => {
       output = resp["menu"];

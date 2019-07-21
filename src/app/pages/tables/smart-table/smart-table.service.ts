@@ -20,6 +20,8 @@ export class SmartTableService {
       return this.http.get("assets/data/user-management.json", {responseType: 'json'});
     } else if (templateCode == 'menu_management') {
       return this.http.get("assets/data/menu-management.json", {responseType: 'json'});
+    } else if (templateCode == 'sample_report_long') {
+      return this.http.get("assets/data/sample-report-long.json", {responseType: 'json'});
     } else {
       return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
     }
@@ -34,16 +36,16 @@ export class SmartTableService {
   //   });
   // }
 
-  async getData(module:string, templateCode:string): Promise<any> {
-    if (templateCode == 'sample_report') {
+  getData(module:string, templateCode:string): Promise<any> {
+    // if (templateCode == 'sample_report') {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve(this.generateDataNew(module, templateCode));
+          resolve(this.generateData(module, templateCode));
         }, 2000);
       });
-    } else {
-      return null;
-    }
+    // } else {
+    //   return null;
+    // }
   }
 
   async createData(): Promise<any> {
@@ -76,19 +78,21 @@ export class SmartTableService {
     };
   }
 
-  async generateDataNew(module, templateCode): Promise<any> {
+  async generateData(module, templateCode): Promise<any> {
     let data = [];
     // for (let i = 0; i < SmartTableService.DATA_SIZE; i++) {
     //   let tmpData = this.getNewExampleObj(i);
     //   data.push(tmpData);
     // }
-    await this.http.get("assets/data/" + module + "-" + templateCode + "-data.json", {responseType: 'json'}).toPromise().then(resp => {
-      data = resp["data"];
-    });    
+    // if (templateCode == "sample_report") {
+      await this.http.get("assets/data/" + module + "-" + templateCode + "-data.json", {responseType: 'json'}).toPromise().then(resp => {
+        data = resp["data"];
+      });    
+    // }
     return data;
   }
 
-  protected generateData(): Array<any> {
+  /*protected generateData(): Array<any> {
     let data = [];
     // for (let i = 0; i < SmartTableService.DATA_SIZE; i++) {
     //   let tmpData = this.getNewExampleObj(i);
@@ -98,5 +102,5 @@ export class SmartTableService {
       data = resp["data"];
     });    
     return data;
-  }
+  }*/
 }
