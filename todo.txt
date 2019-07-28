@@ -7,6 +7,7 @@ to explore
     security, interceptor, session, state management
     spinner
     chatting
+register
 login
 logout
 profile

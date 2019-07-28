@@ -10,8 +10,10 @@ import {
   NbButtonModule,
   NbCheckboxModule,
   NbInputModule,
+  NbIconModule,
 } from '@nebular/theme';
 import { NgxLoginComponent } from './login/login.component';
+import { NgxRegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -25,9 +27,11 @@ import { NgxLoginComponent } from './login/login.component';
     NbCheckboxModule,
     NgxAuthRoutingModule,
     NbAuthModule,
+    NbIconModule
   ],
   declarations: [
-    NgxLoginComponent
+    NgxLoginComponent,
+    NgxRegisterComponent
   ],
 })
 export class NgxAuthModule {
