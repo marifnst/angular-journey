@@ -54,6 +54,7 @@ import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 import { FormDynamicService } from '../pages/forms/form-dynamic/form-dynamic.service';
 import { ChartsService } from '../pages/charts/charts.service';
+import { NgxAuthModule } from '../pages/auth/auth.module';
 
 const socialLinks = [
   {
@@ -155,6 +156,7 @@ export const NB_CORE_PROVIDERS = [
   ],
   exports: [
     NbAuthModule,
+    NgxAuthModule
   ],
   declarations: [],
 })
