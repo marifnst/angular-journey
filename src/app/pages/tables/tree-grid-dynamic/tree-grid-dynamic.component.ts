@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { TreeGridDynamicService } from './tree-grid-dynamic.service';
 
 interface TreeNode<T> {
   data: T;
@@ -18,19 +19,29 @@ interface FSEntry {
   selector: 'ngx-tree-grid-dynamic',
   templateUrl: './tree-grid-dynamic.component.html',
   styleUrls: ['./tree-grid-dynamic.component.scss'],
+  providers: [TreeGridDynamicService]
 })
 export class TreeGridDynamicComponent {
   customColumn = 'name';
   defaultColumns = [ 'size', 'kind', 'items' ];
-  allColumns = [ this.customColumn, ...this.defaultColumns ];
+  // allColumns = [ this.customColumn, ...this.defaultColumns ];
+  allColumns = [];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private treeGridDynamicService:TreeGridDynamicService) {
+    this.treeGridDynamicService.getColumn("", "").then(resp => {
+      this.customColumn = resp["customColumn"];
+      this.defaultColumns = resp["defaultColumns"];
+      this.allColumns = resp["columns"];
+      this.data = resp["content"];
+
+      this.dataSource = this.dataSourceBuilder.create(this.data);
+    });
+    // this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
   updateSort(sortRequest: NbSortRequest): void {
@@ -79,16 +90,13 @@ export class TreeGridDynamicComponent {
 }
 
 @Component({
-  selector: 'ngx-fs-icon',
+  selector: 'ngx-fs-icon-dynamic',
   template: `
     <nb-tree-grid-row-toggle [expanded]="expanded" *ngIf="isDir(); else fileIcon">
     </nb-tree-grid-row-toggle>
-    <ng-template #fileIcon>
-      <nb-icon icon="file-text-outline"></nb-icon>
-    </ng-template>
   `,
 })
-export class FsIconComponent {
+export class FsIconDynamicComponent {
   @Input() kind: string;
   @Input() expanded: boolean;
 

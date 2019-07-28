@@ -16,6 +16,10 @@
         white-space: nowrap;
    }
 
+   ::-webkit-scrollbar {
+    height: 10px;
+  }
+
     .ng2-smart-action-add-add {
       background-color: nb-theme(button-filled-primary-background-color);
       border-color: nb-theme(button-filled-primary-border-color);

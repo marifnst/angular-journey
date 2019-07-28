@@ -6,6 +6,7 @@ to explore
     web socket
     security, interceptor, session, state management
     spinner
+    chatting
 login
 profile
     user profile

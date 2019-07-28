@@ -1,0 +1,15 @@
+{
+  "columns" : ["name", "can_view", "can_insert", "can_update", "can_delete", "can_export", "can_import"],
+  "customColumn" : "name",
+  "defaultColumns" : ["can_view", "can_insert", "can_update", "can_delete", "can_export", "can_import"],
+  "content" : [
+    {
+      "data": { "name": "Security", "can_view" : true, "can_insert" : true, "can_update" : true, "can_delete" : true, "can_export" : true, "can_import" : true, "kind": "dir" },
+      "children": [
+        { "data": { "name": "Role Management", "can_view" : true, "can_insert" : true, "can_update" : true, "can_delete" : true, "can_export" : true, "can_import" : true, "kind": "aaa" } },
+        { "data": { "name": "User Management", "can_view" : true, "can_insert" : true, "can_update" : true, "can_delete" : true, "can_export" : true, "can_import" : true, "kind": "aaa" } },
+        { "data": { "name": "Screen Management", "can_view" : true, "can_insert" : true, "can_update" : true, "can_delete" : true, "can_export" : true, "can_import" : true, "kind": "aaa" } }
+      ]
+    }
+  ]
+}
