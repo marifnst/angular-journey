@@ -32,3 +32,12 @@ table
     approval
     input validation
     column filter
+table (server side)
+    add
+    edit
+    delete
+    export
+    import
+    approval
+    input validation
+    column filter

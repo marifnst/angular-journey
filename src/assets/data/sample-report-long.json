@@ -27,15 +27,35 @@
     },
     "firstName": {
       "title": "First Name",
-      "type": "string"
+      "type": "string",
+      "editable" : false,
+      "width" : "50px"
     },
     "lastName": {
       "title": "Last Name",
-      "type": "string"
+      "type": "string",
+      "editor" : {
+        "type" : "textarea"
+      }
     },
     "username": {
       "title": "Username",
-      "type": "string"
+      "type": "string",
+      "editor" : {
+        "type" : "completer",
+        "config" : {
+          "completer" : {
+            "data" : [
+              {"titleField" : "title_1", "searchField" : "value_1", "descriptionField" : "desc_1"},
+              {"titleField" : "title_2", "searchField" : "value_2", "descriptionField" : "desc_2"},
+              {"titleField" : "title_3", "searchField" : "value_3", "descriptionField" : "desc_3"}
+            ],
+            "searchFields" : "searchField",
+            "titleField" : "titleField",
+            "descriptionField" : "descriptionField"
+          }
+        }
+      }
     },
     "email": {
       "title": "E-mail",
