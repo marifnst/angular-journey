@@ -14,17 +14,18 @@ export class SmartTableService {
   // }
 
   getColumn(module:string, templateCode:string): Observable<any> {
-    if (templateCode == 'role_management') {
-      return this.http.get("assets/data/role-management.json", {responseType: 'json'});
-    } else if (templateCode == 'user_management') {
-      return this.http.get("assets/data/user-management.json", {responseType: 'json'});
-    } else if (templateCode == 'menu_management') {
-      return this.http.get("assets/data/menu-management.json", {responseType: 'json'});
-    } else if (templateCode == 'sample_report_long') {
-      return this.http.get("assets/data/sample-report-long.json", {responseType: 'json'});
-    } else {
-      return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
-    }
+    // if (templateCode == 'role_management') {
+    //   return this.http.get("assets/data/role-management.json", {responseType: 'json'});
+    // } else if (templateCode == 'user_management') {
+    //   return this.http.get("assets/data/user-management.json", {responseType: 'json'});
+    // } else if (templateCode == 'menu_management') {
+    //   return this.http.get("assets/data/menu-management.json", {responseType: 'json'});
+    // } else if (templateCode == 'sample_report_long') {
+    //   return this.http.get("assets/data/sample-report-long.json", {responseType: 'json'});
+    // } else {
+    //   return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
+    // }
+    return this.http.get("/template/getdata/" + module + "/" + templateCode, {responseType: 'json'});
   }
 
   // emulating request to the server

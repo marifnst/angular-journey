@@ -77,7 +77,7 @@ export class SmartTableComponent {
     //   this.settings = Object.assign({}, resp);
     // });
     this.globalService.getColumn(this.module, this.templateCode).subscribe(resp => {
-      this.settings = Object.assign({}, resp);
+      this.settings = Object.assign({}, resp["data"]);
     });
 
     // this.globalService.getData().then((data) => {
