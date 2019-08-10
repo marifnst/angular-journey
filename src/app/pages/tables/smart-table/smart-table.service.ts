@@ -9,9 +9,9 @@ export class SmartTableService {
 
   constructor(private http:HttpClient) {}
 
-  // getColumn(): Observable<any> {
-  //   return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
-  // }
+  async templateInitialization(module:string, templateCode:string): Promise<any> {
+    return await this.http.post("/template/init/" + module + "/" + templateCode, {responseType: 'json'}).toPromise();
+  }
 
   getColumn(module:string, templateCode:string): Observable<any> {
     // if (templateCode == 'role_management') {
@@ -25,7 +25,7 @@ export class SmartTableService {
     // } else {
     //   return this.http.get("assets/data/smart-table.json", {responseType: 'json'});
     // }
-    return this.http.get("/template/getdata/" + module + "/" + templateCode, {responseType: 'json'});
+    return this.http.get("/template/init/" + module + "/" + templateCode, {responseType: 'json'});
   }
 
   // emulating request to the server
@@ -37,11 +37,11 @@ export class SmartTableService {
   //   });
   // }
 
-  getData(module:string, templateCode:string): Promise<any> {
+  getData(templatePayload): Promise<any> {
     // if (templateCode == 'sample_report') {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve(this.generateData(module, templateCode));
+          resolve(this.generateData(templatePayload));
         }, 2000);
       });
     // } else {
@@ -79,15 +79,19 @@ export class SmartTableService {
     };
   }
 
-  async generateData(module, templateCode): Promise<any> {
+  async generateData(templatePayload): Promise<any> {
     let data = [];
     // for (let i = 0; i < SmartTableService.DATA_SIZE; i++) {
     //   let tmpData = this.getNewExampleObj(i);
     //   data.push(tmpData);
     // }
     // if (templateCode == "sample_report") {
-      await this.http.get("assets/data/" + module + "-" + templateCode + "-data.json", {responseType: 'json'}).toPromise().then(resp => {
-        data = resp["data"];
+      // await this.http.get("assets/data/" + module + "-" + templateCode + "-data.json", {responseType: 'json'}).toPromise().then(resp => {
+      //   data = resp["data"];
+      // });
+      // console.log(templatePayload["data_endpoint"]);
+      await this.http.post(templatePayload["data_endpoint"], {responseType: 'json'}).toPromise().then(resp => {
+        data = resp["data"]["rdbms_data"];
       });    
     // }
     return data;

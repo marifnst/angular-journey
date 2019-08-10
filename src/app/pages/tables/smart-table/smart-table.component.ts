@@ -42,6 +42,7 @@ export class SmartTableComponent {
 
   module = "";
   templateCode = "";
+  templatePayload = {};
   source: LocalDataSource = new LocalDataSource();
   buttonType: NbComponentStatus = 'primary';
   buttonList = ['Create', 'Export', 'Import'];
@@ -76,18 +77,29 @@ export class SmartTableComponent {
     // this.globalService.getColumn().subscribe(resp => {
     //   this.settings = Object.assign({}, resp);
     // });
-    this.globalService.getColumn(this.module, this.templateCode).subscribe(resp => {
-      this.settings = Object.assign({}, resp["data"]);
+    this.globalService.templateInitialization(this.module, this.templateCode).then(resp => {
+      this.templatePayload = Object.assign({}, resp["data"]);
+      this.settings = Object.assign({}, resp["data"]["payload"]);
+      this.globalService.getData(this.templatePayload).then((data) => {
+        if (data != null) {
+          this.source.load(data);
+        }      
+      });
     });
 
     // this.globalService.getData().then((data) => {
     //   this.source.load(data);
     // });
-    this.globalService.getData(this.module, this.templateCode).then((data) => {
-      if (data != null) {
-        this.source.load(data);
-      }      
-    });
+    // this.globalService.getData(this.module, this.templateCode).then((data) => {
+    //   if (data != null) {
+    //     this.source.load(data["data"]);
+    //   }      
+    // });
+    // this.globalService.getData(this.templatePayload).then((data) => {
+    //   if (data != null) {
+    //     this.source.load(data["data"]);
+    //   }      
+    // });
   }
   
   async onCreateConfirm(event): Promise<any> {
