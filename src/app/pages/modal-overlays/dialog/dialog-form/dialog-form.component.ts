@@ -12,19 +12,28 @@ import { FormDynamicService } from '../../../forms/form-dynamic/form-dynamic.ser
 export class DialogFormComponent {
   @Input() title: string;
   @Input() dialogType: string;
+  @Input() templatePayload: {};
 
   payload: {};
   profileForm = new FormGroup({});
 
-  constructor(protected ref: NbDialogRef<DialogFormComponent>, protected formDynamicService:FormDynamicService) {
-    formDynamicService.getForm().subscribe(resp => {
-      this.payload = resp;
-      resp["forms"].forEach(element => {
+  constructor(protected ref: NbDialogRef<DialogFormComponent>, protected formDynamicService:FormDynamicService) {    
+    // formDynamicService.getForm().subscribe(resp => {
+      // this.payload = resp;
+      // resp["forms"].forEach(element => {
         // console.log(element.name);
-        this.profileForm.addControl(element.name, new FormControl(''));
-      });
+        // this.profileForm.addControl(element.name, new FormControl(''));
+      // });
       // console.log(this.payload);
-    });   
+    // });
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit : ' + this.templatePayload + ' '+ this.dialogType);
+    this.templatePayload["insert_form_payload"].forEach(element => {
+      // console.log(element.name);
+      this.profileForm.addControl(element.name, new FormControl(''));
+    });
   }
 
   onClickGeneral() {

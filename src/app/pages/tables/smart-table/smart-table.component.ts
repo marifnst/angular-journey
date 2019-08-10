@@ -79,7 +79,7 @@ export class SmartTableComponent {
     // });
     this.globalService.templateInitialization(this.module, this.templateCode).then(resp => {
       this.templatePayload = Object.assign({}, resp["data"]);
-      this.settings = Object.assign({}, resp["data"]["payload"]);
+      this.settings = Object.assign({}, resp["data"]["column_payload"]);
       this.globalService.getData(this.templatePayload).then((data) => {
         if (data != null) {
           this.source.load(data);
@@ -153,16 +153,18 @@ export class SmartTableComponent {
 
   openDialog(buttonType:string) {
     this.dialogService
-    .open(DialogFormComponent, {
-      context: {
-        title: 'Dari Table Component',
-        dialogType: buttonType
-      }
-    }).onClose.subscribe(resp => {
-      if (resp["status"] == "insert") {
-        console.log('dari on clos subscribe ' + resp["username"]);
-      }      
-    });
+      .open(DialogFormComponent, {
+        context: {
+          title: 'Dari Table Component',
+          dialogType: buttonType,
+          templatePayload: this.templatePayload
+        }
+      })
+      .onClose.subscribe(resp => {
+        if (resp["status"] == "insert") {
+          console.log('dari on clos subscribe ' + resp["username"]);
+        }      
+      });
   }
 
   openExportDialog() {

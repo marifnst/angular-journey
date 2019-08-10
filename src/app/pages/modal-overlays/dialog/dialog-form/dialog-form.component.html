@@ -1,7 +1,7 @@
 <nb-card>
   <nb-card-header>{{ title }}</nb-card-header>
-  <nb-card-body [formGroup]="profileForm" *ngIf="!!payload">
-      <input *ngFor="let form of payload.forms"
+  <nb-card-body [formGroup]="profileForm" *ngIf="!!templatePayload">
+      <input *ngFor="let form of templatePayload.insert_form_payload"
       type={{form.type}}
       formControlName={{form.name}}          
       nbInput 
