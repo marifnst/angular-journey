@@ -92,9 +92,21 @@ export class SmartTableService {
       // console.log(templatePayload["data_endpoint"]);
       await this.http.post(templatePayload["data_endpoint"], {responseType: 'json'}).toPromise().then(resp => {
         data = resp["data"]["rdbms_data"];
-      });    
+      });
     // }
     return data;
+  }
+
+  async insertProcess(templatePayload, payload) : Promise<any> {
+    return await this.http.post(templatePayload["insert_endpoint"], payload).toPromise();
+  }
+
+  async updateProcess(templatePayload, payload) : Promise<any> {
+    return await this.http.post(templatePayload["update_endpoint"], payload).toPromise();
+  }
+
+  async deleteProcess(templatePayload, payload) : Promise<any> {
+    return await this.http.post(templatePayload["delete_endpoint"], payload).toPromise();
   }
 
   /*protected generateData(): Array<any> {

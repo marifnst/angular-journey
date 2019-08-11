@@ -14,7 +14,7 @@ export class DialogFormComponent {
   @Input() dialogType: string;
   @Input() templatePayload: {};
 
-  payload: {};
+  // payload: {};
   profileForm = new FormGroup({});
 
   constructor(protected ref: NbDialogRef<DialogFormComponent>, protected formDynamicService:FormDynamicService) {    
@@ -38,12 +38,14 @@ export class DialogFormComponent {
 
   onClickGeneral() {
     let output = {"status" : "insert"};
-    if (this.dialogType == 'Create') {
-      this.payload["forms"].forEach(element => {
+    let tmpData = {};
+    if (this.dialogType == 'Create') {      
+      this.templatePayload["insert_form_payload"].forEach(element => {
         // console.log(element.name);
-        console.log('on click button ' + this.profileForm.controls[element.name].value);
-        output[element.name] = this.profileForm.controls[element.name].value;
+        // console.log('on click button ' + this.profileForm.controls[element.name].value);
+        tmpData[element.name] = this.profileForm.controls[element.name].value;        
       });
+      output["data"] = Object.assign({}, tmpData);
     } else {
       console.log('on click general other');
     }

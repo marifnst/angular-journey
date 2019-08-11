@@ -112,18 +112,42 @@ export class SmartTableComponent {
   }
 
   onEditConfirm(event): void {
+    console.log(event);
     if (window.confirm('Are you sure you want to edit?')) {
-      this.globalService.editData();
-      event.confirm.resolve();
+      this.globalService.updateProcess(this.templatePayload, event.newData).then(updateResponse => {
+        if (updateResponse["metadata"]["code"] == 200) {
+          event.confirm.resolve();
+          alert(updateResponse["metadata"]["message"]);
+        } else {
+          if (!!updateResponse["metadata"]["stacktrace"]) {
+            alert(updateResponse["metadata"]["stacktrace"]);
+          } else {
+            alert(updateResponse["metadata"]["message"]);
+          }
+        }        
+      });      
     } else {
       event.confirm.reject();
     }
   }
 
   onDeleteConfirm(event): void {
+    console.log(event);
     if (window.confirm('Are you sure you want to delete?')) {
-      this.globalService.deleteData();
-      event.confirm.resolve();
+      // this.globalService.deleteData();
+      // event.confirm.resolve();
+      this.globalService.deleteProcess(this.templatePayload, event.data).then(updateResponse => {
+        if (updateResponse["metadata"]["code"] == 200) {
+          event.confirm.resolve();
+          alert(updateResponse["metadata"]["message"]);
+        } else {
+          if (!!updateResponse["metadata"]["stacktrace"]) {
+            alert(updateResponse["metadata"]["stacktrace"]);
+          } else {
+            alert(updateResponse["metadata"]["message"]);
+          }
+        }        
+      });      
     } else {
       event.confirm.reject();
     }
@@ -162,7 +186,19 @@ export class SmartTableComponent {
       })
       .onClose.subscribe(resp => {
         if (resp["status"] == "insert") {
-          console.log('dari on clos subscribe ' + resp["username"]);
+          this.globalService.insertProcess(this.templatePayload, resp["data"]).then(insertResponse => {
+            if (insertResponse["metadata"]["code"] == 200) {
+              alert(insertResponse["metadata"]["message"]);
+              this.source.append(insertResponse["data"]["insert_data"]);
+              this.source.refresh();
+            } else {
+              if (!!insertResponse["metadata"]["stacktrace"]) {
+                alert(insertResponse["metadata"]["stacktrace"]);
+              } else {
+                alert(insertResponse["metadata"]["message"]);
+              }              
+            }
+          });
         }      
       });
   }

@@ -23,6 +23,7 @@ security
 form
     combobox
     datepicker
+    validation
 table
     add
     edit
