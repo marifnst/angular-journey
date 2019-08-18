@@ -1,8 +1,9 @@
 <nb-card>
   <nb-card-header>Export</nb-card-header>
   <nb-card-body>
-    <nb-select selected="export_type">
+    <nb-select [(selected)]="selectedItem" (selectedChange)="onChange($event)">
       <nb-option value="export_type">- Type -</nb-option>
+      <nb-option value="csv">Csv</nb-option>
       <nb-option value="xls">Xls</nb-option>
       <nb-option value="xlsx">Xlsx</nb-option>
     </nb-select>

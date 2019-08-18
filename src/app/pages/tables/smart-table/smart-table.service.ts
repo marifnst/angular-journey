@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpEventType } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from  'rxjs/operators';
 
 @Injectable()
 export class SmartTableService {
@@ -10,7 +11,7 @@ export class SmartTableService {
   constructor(private http:HttpClient) {}
 
   async templateInitialization(module:string, templateCode:string): Promise<any> {
-    return await this.http.post("/template/init/" + module + "/" + templateCode, {responseType: 'json'}).toPromise();
+    return await this.http.post("/api/template/init/" + module + "/" + templateCode, {responseType: 'json'}).toPromise();
   }
 
   getColumn(module:string, templateCode:string): Observable<any> {
@@ -107,6 +108,10 @@ export class SmartTableService {
 
   async deleteProcess(templatePayload, payload) : Promise<any> {
     return await this.http.post(templatePayload["delete_endpoint"], payload).toPromise();
+  }
+
+  importProcess(formData, templatePayload) : Promise<any> {
+    return this.http.post(templatePayload["import_endpoint"], formData, {reportProgress: true, observe: 'events'}).toPromise();
   }
 
   /*protected generateData(): Array<any> {

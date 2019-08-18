@@ -14,4 +14,9 @@ export class DialogFormService {
     return this.http.get("./assets/data/form-dynamic.json", {responseType: 'json'});
   }
 
+  exportProcess(exportType, templatePayload):Promise<any> {
+    // console.log("templatePayload.export_endpoint[exportType] : " + templatePayload.export_endpoint[exportType]);
+    return this.http.post(templatePayload.export_endpoint[exportType], {}).toPromise();
+  }
+
 }

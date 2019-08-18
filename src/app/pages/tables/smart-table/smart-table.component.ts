@@ -206,7 +206,9 @@ export class SmartTableComponent {
   openExportDialog() {
     this.dialogService
     .open(DialogExportComponent, {
-      context: {}
+      context: {
+        templatePayload: this.templatePayload
+      }
     }).onClose.subscribe(resp => {
       console.log('on close open export dialog');
     });
@@ -216,8 +218,9 @@ export class SmartTableComponent {
     this.importData = <File> fileInput.target.files[0];
 
     const formData = new FormData();
-    formData.append('files', this.importData);
+    formData.append('file', this.importData);
     console.log('import process : ' + this.importData.name);
+    this.globalService.importProcess(formData, this.templatePayload);
 
     // https://w3path.com/new-angular-8-file-upload-or-image-upload/
     // this.fileUploadProgress = '0%';

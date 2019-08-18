@@ -1,0 +1,10 @@
+{
+    "/template": {
+        "target": "http://localhost:8081",
+        "secure": false
+    },
+    "/postgresql": {
+        "target": "http://localhost:8082",
+        "secure": false
+    }
+}
