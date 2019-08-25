@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { MENU_ITEMS } from './pages-menu';
-import { GeneralService } from '../@core/utils';
+import { RxStompService} from '@stomp/ng2-stompjs';
+import { Message } from '@stomp/stompjs';
 
 @Component({
   selector: 'ngx-pages',
@@ -12,19 +13,23 @@ import { GeneralService } from '../@core/utils';
       <router-outlet></router-outlet>
     </ngx-one-column-layout>
   `,
-  providers:[GeneralService]
+  providers:[]
 })
 export class PagesComponent {
 
-  menu = MENU_ITEMS;
-  /*menu = [];
+  menu = MENU_ITEMS;  
+  receivedMessages: string[] = [];
 
-  constructor(generalService:GeneralService) {
-    // console.log('PagesRoutingModule : ' + this.menu.length);
-    if (this.menu.length == 0) {
-      generalService.getMenu().then(resp => {
-        this.menu = resp;
-      });
-    }
-  }*/
+  constructor(private rxStompService: RxStompService) {
+    const message = "Message From Angular";
+    console.log(">>>> message : " + message);
+    this.rxStompService.publish({destination: '/topic/exportNotification', body: message});
+  }
+
+  ngOnInit() {
+    this.rxStompService.watch('/topic/exportNotification').subscribe((message: Message) => {
+      this.receivedMessages.push(message.body);
+      console.log(">>>> message : " + message.body);
+    });
+  }
 }
