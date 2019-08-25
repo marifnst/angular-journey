@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MENU_ITEMS } from './pages-menu';
 import { RxStompService} from '@stomp/ng2-stompjs';
 import { Message } from '@stomp/stompjs';
+import { WebSocketService } from '../@core/utils';
 
 @Component({
   selector: 'ngx-pages',
@@ -13,23 +14,27 @@ import { Message } from '@stomp/stompjs';
       <router-outlet></router-outlet>
     </ngx-one-column-layout>
   `,
-  providers:[]
+  providers:[WebSocketService]
 })
 export class PagesComponent {
 
   menu = MENU_ITEMS;  
   receivedMessages: string[] = [];
 
-  constructor(private rxStompService: RxStompService) {
-    const message = "Message From Angular";
-    console.log(">>>> message : " + message);
-    this.rxStompService.publish({destination: '/topic/exportNotification', body: message});
+  constructor(private webSocketService: WebSocketService) {
+    webSocketService._connect();  
   }
 
-  ngOnInit() {
-    this.rxStompService.watch('/topic/exportNotification').subscribe((message: Message) => {
-      this.receivedMessages.push(message.body);
-      console.log(">>>> message : " + message.body);
-    });
-  }
+  // constructor(private rxStompService: RxStompService) {
+    // const message = "Message From Angular";
+    // console.log(">>>> message : " + message);
+    // this.rxStompService.publish({destination: '/topic/exportNotification', body: message});
+  // }
+
+  // ngOnInit() {
+  //   this.rxStompService.watch('/topic/exportNotification').subscribe((message: Message) => {
+  //     this.receivedMessages.push(message.body);
+  //     console.log(">>>> message : " + message.body);
+  //   });
+  // }
 }

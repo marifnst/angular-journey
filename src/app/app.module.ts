@@ -20,8 +20,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
-import { myRxStompConfig } from './my-rx-stomp.config';
+// import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
+// import { myRxStompConfig } from './my-rx-stomp.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,17 +45,17 @@ import { myRxStompConfig } from './my-rx-stomp.config';
     CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],
-  providers: [
-    {
-      provide: InjectableRxStompConfig,
-      useValue: myRxStompConfig
-    },
-    {
-      provide: RxStompService,
-      useFactory: rxStompServiceFactory,
-      deps: [InjectableRxStompConfig]
-    }
-  ]
+  // providers: [
+  //   {
+  //     provide: InjectableRxStompConfig,
+  //     useValue: myRxStompConfig
+  //   },
+  //   {
+  //     provide: RxStompService,
+  //     useFactory: rxStompServiceFactory,
+  //     deps: [InjectableRxStompConfig]
+  //   }
+  // ]
 })
 export class AppModule {
 }
